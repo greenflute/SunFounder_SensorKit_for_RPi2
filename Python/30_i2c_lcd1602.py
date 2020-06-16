@@ -49,7 +49,7 @@ def loop3():
 			tmp = tmp + greetings[:32-len(tmp)]
 
 		LCD1602.write(0, 0, tmp[0:16])
-		LCD1602.write(0, 1, tmp[16::-1])
+		LCD1602.write(0, 1, tmp[16:][::-1])
 		time.sleep(0.8)
 		LCD1602.clear()
 
