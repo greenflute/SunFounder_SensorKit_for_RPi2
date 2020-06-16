@@ -36,6 +36,23 @@ def loop2():
 		time.sleep(0.8)
 		LCD1602.clear()
 
+def loop3():
+	greetings = 'Actions speak louder than words.'
+	i = 0
+	while True:
+		i = (i + 1) % len(greetings)
+
+		if i+32 < len(greetings):
+			tmp = greetings[i:i+32]
+		else:
+			tmp = greetings[i:]
+			tmp = tmp + greetings[:32-len(tmp)]
+
+		LCD1602.write(0, 0, tmp[0:16])
+		LCD1602.write(0, 1, tmp[16::-1])
+		time.sleep(0.8)
+		LCD1602.clear()
+
 def destroy():
 	pass	
 
@@ -44,7 +61,8 @@ if __name__ == "__main__":
 		setup()
 		time.sleep(2)
 		# loop()
-		loop2()
+		# loop2()
+		loop3()
 		while True:
 			pass
 	except KeyboardInterrupt:
