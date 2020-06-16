@@ -20,13 +20,31 @@ def loop():
 			time.sleep(0.8)
 			LCD1602.clear()
 
+def loop2():
+	greetings = 'Thank you for buying SunFounder Sensor Kit for Raspberry! ^_^ '
+	i = 0
+	while True:
+		i = (i + 1) % len(greetings)
+
+		if i+32 < len(greetings):
+			tmp = greetings[i:i+32]
+		else:
+			tmp = greetings[i:]
+			tmp = tmp + greetings[:32-len(tmp)]
+
+		LCD1602.write(0, 0, tmp)
+		time.sleep(0.8)
+		LCD1602.clear()
+
 def destroy():
 	pass	
 
 if __name__ == "__main__":
 	try:
 		setup()
-		#loop()
+		time.sleep(2)
+		# loop()
+		loop2()
 		while True:
 			pass
 	except KeyboardInterrupt:
